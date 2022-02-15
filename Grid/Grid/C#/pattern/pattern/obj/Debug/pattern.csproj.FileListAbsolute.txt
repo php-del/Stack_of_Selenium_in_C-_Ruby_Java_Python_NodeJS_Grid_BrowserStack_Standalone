@@ -1,0 +1,6 @@
+/Users/pratikhemantpathare/Projects/pattern/pattern/bin/Debug/pattern.exe
+/Users/pratikhemantpathare/Projects/pattern/pattern/bin/Debug/pattern.pdb
+/Users/pratikhemantpathare/Projects/pattern/pattern/obj/Debug/pattern.csproj.AssemblyReference.cache
+/Users/pratikhemantpathare/Projects/pattern/pattern/obj/Debug/pattern.csproj.CoreCompileInputs.cache
+/Users/pratikhemantpathare/Projects/pattern/pattern/obj/Debug/pattern.exe
+/Users/pratikhemantpathare/Projects/pattern/pattern/obj/Debug/pattern.pdb

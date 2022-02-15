@@ -1,0 +1,1859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AlexanderOnTest.NetCoreWebDriverFactory</name>
+    </assembly>
+    <members>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Browser">
+            <summary>
+            Enum of supported desktop WebDriver supported Browsers
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Browser.Firefox">
+            <summary>
+            Mozilla Firefox
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Browser.Chrome">
+            <summary>
+            Google Chrome
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Browser.InternetExplorer">
+            <summary>
+            Microsoft Internet Explorer version 11
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Browser.Edge">
+            <summary>
+            Microsoft Edge
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Browser.Safari">
+            <summary>
+             Apple Safari
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration">
+            <summary>
+            Interface for a WebDriver Configuration object.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.Browser">
+            <summary>
+            Browser type to request.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.PlatformType">
+            <summary>
+            Platform to request for a RemoteWebDriver.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.WindowSize">
+            <summary>
+            Defined WindowSize to request.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.WindowDefinedSize">
+            <summary>
+            Actual window size requested (if not Maximize/Maximise or Unchanged)
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.GridUri">
+            <summary>
+            The Uri of the Selenium grid to use for remote calls.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.IsLocal">
+            <summary>
+            Use a local WebDriver.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration.Headless">
+            <summary>
+            Run headless if available.
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration">
+            <summary>
+            A WebDriver Configuration implementation.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.Browser,System.Uri,System.Boolean,System.Boolean,OpenQA.Selenium.PlatformType,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Generate a new immutable WebDriverConfiguration instance.
+            </summary>
+            <param name="browser"></param>
+            <param name="gridUri"></param>
+            <param name="headless"></param>
+            <param name="isLocal"></param>
+            <param name="platformType"></param>
+            <param name="windowSize"></param>
+            <param name="windowDefinedSize"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.Browser">
+            <summary>
+            Browser type to request.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.PlatformType">
+            <summary>
+            Platform to request for a RemoteWebDriver
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.WindowSize">
+            <summary>
+            WindowSize to request
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.WindowDefinedSize">
+            <summary>
+            Actual window size requested (if not Maximize/Maximise or Unchanged)
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.GridUri">
+            <summary>
+            The Uri of the Selenium grid to use for remote calls.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.IsLocal">
+            <summary>
+            Use a local WebDriver.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.Headless">
+            <summary>
+            Run headless if available.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.ToString">
+            <summary>
+            Return the configuration in a readable form.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.DeserializeFromJson(System.String)">
+            <summary>
+            Convenience method to Deserialize from Json.
+            </summary>
+            <param name="jsonString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Config.WebDriverConfiguration.SerializeToJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory">
+            <summary>
+            Example DI Container factory for quick prototyping.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using these method directly.</para>
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection">
+            <summary>
+            Get a ServiceCollection referencing default implementations using implicit path.
+            Use for .NET Framework projects and projects where the driver executables are on the System Path.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Get a ServiceCollection referencing default implementations using implicit path.
+            Use for .NET Framework projects and projects where the driver executables are on the System Path.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="driverConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(System.Uri)">
+            <summary>
+            Get a ServiceCollection referencing default implementations using implicit path.
+            Use for .NET Framework projects and projects where the driver executables are on the System Path.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="gridUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(System.Boolean)">
+            <summary>
+            Experimental - Get a ServiceCollection referencing default implementations.
+            Use true for .NET Core projects with driver executables from nuget packages / false for .NET Framework using nuget or driver executables on the System Path.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="useDefaultDotNetCoreDriverPath"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(System.Boolean,System.Uri)">
+            <summary>
+            Experimental - Get a ServiceCollection referencing default implementations.
+            Use true for .NET Core projects with driver executables from nuget packages / false for .NET Framework using nuget or driver executables on the System Path.
+            WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.
+            </summary>
+            <param name="useDefaultDotNetCoreDriverPath"></param>
+            <param name="gridUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(System.Boolean,AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Experimental - Get a ServiceCollection referencing default implementations.
+            Use true for .NET Core projects with driver executables from nuget packages / false for .NET Framework using nuget or driver executables on the System Path.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="useDefaultDotNetCoreDriverPath"></param>
+            <param name="driverConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(AlexanderOnTest.NetCoreWebDriverFactory.DriverPath)">
+            <summary>
+            Get a ServiceCollection referencing default implementations with a defined driver path.
+            Use for .NET Core projects with driver executables from nuget packages.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="driverPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(AlexanderOnTest.NetCoreWebDriverFactory.DriverPath,System.Uri)">
+            <summary>
+            Get a ServiceCollection referencing default implementations with a defined driver path.
+            Use for .NET Core projects with driver executables from nuget packages.
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="driverPath"></param>
+            <param name="gridUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DependencyInjection.ServiceCollectionFactory.GetDefaultServiceCollection(AlexanderOnTest.NetCoreWebDriverFactory.DriverPath,AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Get a ServiceCollection referencing all Default implementations. 
+            <para>WARNING: This should not be considered stable for use in production projects.
+            You are STRONGLY advised to use the source code for inspiration rather than using this method directly.</para>
+            </summary>
+            <param name="driverPath"></param>
+            <param name="driverConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.IWebDriverManager">
+            <summary>
+            Interface for a WebDriver Manager class that provides a singleton
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.IWebDriverManager.Get">
+            <summary>
+            Return a singleton WebDriver instance;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.IWebDriverManager.Quit">
+            <summary>
+            Quit and clear the current singleton WebDriver instance;
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.IWebDriverManager.GetAdditionalWebDriver">
+            <summary>
+            Return a new WebDriver instance independent of the singleton instance;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager">
+            <summary>
+            A simple implementation of a WebDriverManager
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IWebDriverFactory,AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Configuration based constructor for a WebDriverManager
+            </summary>
+            <param name="factory"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IWebDriverFactory,AlexanderOnTest.NetCoreWebDriverFactory.Browser,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,OpenQA.Selenium.PlatformType,System.Boolean)">
+            <summary>
+            Parameter based constructor for a WebDriverManager
+            </summary>
+            <param name="factory"></param>
+            <param name="browser"></param>
+            <param name="windowSize"></param>
+            <param name="isLocal"></param>
+            <param name="platformType"></param>
+            <param name="headless"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.Driver">
+            <summary>
+            The singleton WebDriver instance.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.Get">
+            <summary>
+            Return a singleton WebDriver instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.Quit">
+            <summary>
+            Quit and clear the current singleton WebDriver instance;
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.GetAdditionalWebDriver">
+            <summary>
+            Return a new WebDriver instance independent of the singleton instance;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverManager.WebDriverManager.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory">
+            <summary>
+            An overridable implementation of the IDriverOptionsFactory Interface.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.#ctor">
+            <summary>
+            Construct a default DriverOptionsFactory.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.#ctor(System.Collections.Generic.Dictionary{System.Type,OpenQA.Selenium.DriverOptions})">
+            <summary>
+            Constructor to override the default DriverOptions.
+            </summary>
+            <param name="driverOptionsDictionary"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.DriverOptionsDictionary">
+            <summary>
+            Dictionary of basically configured DriverOptions instances.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.GetLocalDriverOptions``1(System.Boolean)">
+            <summary>
+            Return a DriverOptions instance of the correct type configured for a Local WebDriver.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.GetRemoteDriverOptions``1(OpenQA.Selenium.PlatformType)">
+            <summary>
+            Return a DriverOptions instance of the correct type configured for a RemoteWebDriver.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.SetPlatform``1(``0,OpenQA.Selenium.PlatformType)">
+            <summary>
+            Add the platform configuration to a DriverOptions instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="options"></param>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.AddHeadlessOption``1(``0)">
+            <summary>
+            Add the headless flag if available.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="driverOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.DefaultDriverOptionsFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory">
+            <summary>
+            Interface for DriverOptionsFactory instances.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory.GetLocalDriverOptions``1(System.Boolean)">
+            <summary>
+            Return a DriverOptions instance of the correct type configured for a Local WebDriver.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory.GetRemoteDriverOptions``1(OpenQA.Selenium.PlatformType)">
+            <summary>
+            Return a DriverOptions instance of the correct type configured for a Local WebDriver.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory">
+            <summary>
+            Static Factory for DriverOptions
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetChromeOptions(OpenQA.Selenium.PlatformType,System.Boolean)">
+            <summary>
+            Return a configured ChromeOptions instance for a RemoteWebDriver.
+            </summary>
+            <param name="platformType"></param>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetChromeOptions(System.Boolean)">
+            <summary>
+            Return a configured ChromeOptions instance  for a local WebDriver.
+            </summary>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetFirefoxOptions(OpenQA.Selenium.PlatformType,System.Boolean)">
+            <summary>
+            Return a configured FirefoxOptions instance for a RemoteWebDriver.
+            </summary>
+            <param name="platformType"></param>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetFirefoxOptions(System.Boolean)">
+            <summary>
+            Return a configured FirefoxOptions instance for a local WebDriver.
+            </summary>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetEdgeOptions(OpenQA.Selenium.PlatformType)">
+            <summary>
+            Return a configured EdgeOptions instance.
+            </summary>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetInternetExplorerOptions(OpenQA.Selenium.PlatformType)">
+            <summary>
+            Return a configured InternetExplorerOptions instance.
+            </summary>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.GetSafariOptions(OpenQA.Selenium.PlatformType)">
+            <summary>
+            Return a configured SafariOptions instance.
+            </summary>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.SetPlatform``1(``0,OpenQA.Selenium.PlatformType)">
+            <summary>
+            Add the platform configuration to a DriverOptions instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="options"></param>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.StaticDriverOptionsFactory.AddHeadlessOption``1(``0)">
+            <summary>
+            Add the headless flag if available.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="driverOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.DriverPath">
+            <summary>
+            DriverPath object containing the local WebDriver executable path as a string
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverPath.#ctor">
+            <summary>
+            For convenience when local WebDriver testing is not required. Use 'new DriverPath(Assembly.GetExecutingAssembly());' for local testing
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverPath.#ctor(System.String)">
+            <summary>
+            For convenience when local WebDriver testing is not required. Use 'new DriverPath(Assembly.GetExecutingAssembly());' for local testing
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.DriverPath.#ctor(System.Reflection.Assembly)">
+            <summary>
+            For testing locally call as 'new DriverPath(Assembly.GetExecutingAssembly());' 
+            </summary>
+            <param name="assembly"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.DriverPath.PathString">
+            <summary>
+            Return the pathString for locating local WebDriver executables.
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.ExperimentalAttribute">
+            <summary>
+            Limited testing suggests that this method works as desired under limited conditions.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.ExperimentalAttribute.#ctor(System.String)">
+            <summary>
+            Testing suggests that this method works as desired with certain conditions.
+            </summary>
+            <param name="testedConditions"> Conditions under which this SHOULD be expected to work. YMMV in other usage. </param>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.QuickStartAttribute">
+            <summary>
+            <para> Indicates that a this implementation should be used as a guide only and is not production ready.</para>
+            <para> EXPLICITLY: This implementation may be changed without warning.</para>
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder">
+            <summary>
+            Builder class for easy configuration
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.Start">
+            <summary>
+            return a new instance of this class
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.Build">
+            <summary>
+            Generate the WebDriverConfiguration from the current state of the builder.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithBrowser(AlexanderOnTest.NetCoreWebDriverFactory.Browser)">
+            <summary>
+            Set the required Browser
+            </summary>
+            <param name="browser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithGridUri(System.Uri)">
+            <summary>
+            Set the required Uri for the Selenium Grid
+            </summary>
+            <param name="gridUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithHeadless(System.Boolean)">
+            <summary>
+            Set the Headless switch as required
+            </summary>
+            <param name="headless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithIsLocal(System.Boolean)">
+            <summary>
+            Set the IsLocal switch as required
+            </summary>
+            <param name="isLocal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithPlatformType(OpenQA.Selenium.PlatformType)">
+            <summary>
+            Set the required PlatformType
+            </summary>
+            <param name="platformType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithWindowSize(AlexanderOnTest.NetCoreWebDriverFactory.WindowSize)">
+            <summary>
+            Set the required value for the WindowSize Enum
+            </summary>
+            <param name="windowSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithWindowDefinedSize(System.Drawing.Size)">
+            <summary>
+            Set the required WindowDefinedSize (Caution: only used for WindowSize.Custom/ WindowSize.Defined)
+            </summary>
+            <param name="customWindowSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.WithCustomSize(System.Drawing.Size)">
+            <summary>
+            Shortcut method to request the given Custom Size
+            </summary>
+            <param name="customWindowSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.RunRemotelyOn(System.Uri)">
+            <summary>
+            Shortcut method to request running remotely on the given Uri
+            </summary>
+            <param name="gridUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.RunHeadless">
+            <summary>
+            Set the Browser to run in headless mode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Builders.WebDriverConfigurationBuilder.GetJsonConfigString">
+            <summary>
+            Return a formatted, human readable Json string suitable for saving locally in a Config_WebDriver.json file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Converters.SizeJsonConverter">
+            <summary>
+            Based on code at https://stackoverflow.com/questions/21471404/how-to-de-serialize-system-drawing-size-to-object-using-json-net
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Converters.SizeJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type.
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>
+            	<c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Converters.SizeJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>Writes the JSON representation of the object.</summary>
+            <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter" /> to write to.</param>
+            <param name="value">The value.</param>
+            <param name="serializer">The calling serializer.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.Converters.SizeJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>Reads the JSON representation of the object.</summary>
+            <param name="reader">The <see cref="T:Newtonsoft.Json.JsonReader" /> to read from.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="existingValue">The existing value of object being read.</param>
+            <param name="serializer">The calling serializer.</param>
+            <returns>The object value.</returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer">
+            <summary>
+            Interface for a WebDriver resizing service
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer.SetWindowSize(OpenQA.Selenium.IWebDriver,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Set the WebDriver to the requested Browser size.
+            </summary>
+            <param name="driver"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Utils.WebDriverReSizer">
+            <summary>
+            Default implementation of the IWebDriverReSizer interface
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Utils.WebDriverReSizer.SetWindowSize(OpenQA.Selenium.IWebDriver,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Set the WebDriver to the requested Browser size.
+            </summary>
+            <param name="driver"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultLocalWebDriverFactory">
+            <summary>
+            Default LocalWebDriverFactory implementation for .NET Core projects in Windows 10 versions 1809 and 1903.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultLocalWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,System.String,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a DriverFactory instance for use in .NET Core projects.
+            Try using installedDriverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)" when running from .NET core projects.
+            </summary>
+            <param name="installedDriverPath"></param>
+            <param name="driverOptionsFactory"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultLocalWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,AlexanderOnTest.NetCoreWebDriverFactory.DriverPath,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a DriverFactory instance for use in .NET Core projects.
+            Try using driverPath = new DriverPath(Assembly.GetCallingAssembly()) when testing locally from .NET core projects.
+            </summary>
+            <param name="driverPath"></param>
+            <param name="driverOptionsFactory"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory">
+            <summary>
+            Default RemoteWebDriverFactory implementation.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,System.Uri,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a DriverFactory instance for use in .NET Core projects.
+            Try using installedDriverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)" when running from .NET core projects.
+            </summary>
+            <param name="gridUri"></param>
+            <param name="driverOptionsFactory"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a DriverFactory instance for use in .NET Core projects.
+            Try using driverPath = new DriverPath(Assembly.GetCallingAssembly()) when testing locally from .NET core projects.
+            </summary>
+            <param name="configuration"></param>
+            <param name="driverOptionsFactory"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.DriverOptionsFactory">
+            <summary>
+            The DriverOptionsFactory instance to use.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.GridUri">
+            <inheritdoc />
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.GetWebDriver(OpenQA.Selenium.DriverOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a RemoteWebDriver of the given browser type with default settings.
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Return a RemoteWebDriver instance of the given configuration.
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,OpenQA.Selenium.PlatformType,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a configured RemoteWebDriver of the given browser type with default settings.
+            </summary>
+            <param name="browser"></param>
+            <param name="platformType"></param>
+            <param name="windowSize"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultRemoteWebDriverFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory">
+            <summary>
+            Overridable implementation of the IWebDriverFactory interface for .NET Core test projects.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory,AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IRemoteWebDriverFactory)">
+            <summary>
+            Return a DriverFactory instance.
+            </summary>
+            <param name="localWebDriverFactory"></param>
+            <param name="remoteWebDriverFactory"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.RemoteWebDriverFactory">
+            <summary>
+            The RemoteWebDriverFactory instance to use.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.LocalWebDriverFactory">
+            <summary>
+            The LocalWebDriverFactory instance to use.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,OpenQA.Selenium.PlatformType,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a WebDriver instance of the given configuration.
+            </summary>
+            <param name="browser"></param>
+            <param name="windowSize"></param>
+            <param name="isLocal"></param>
+            <param name="platformType"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Return a WebDriver instance of the given configuration.
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.DefaultWebDriverFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.FrameworkLocalWebDriverFactory">
+            <summary>
+            Overridable implementation of the ILocalWebDriverFactory interface for use with .Net Framework test projects.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.FrameworkLocalWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a WebDriverFactory instance for use with .NET framework projects
+            </summary>
+            <param name="driverOptionsFactory"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory">
+            <summary>
+            Interface for a Factory for WebDrivers running on the local machine.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a local webdriver of the given browser type with default settings.
+            </summary>
+            <param name="browser"></param>
+            <param name="windowSize"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Return a Local IWebDriver instance of the given configuration.
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(OpenQA.Selenium.Chrome.ChromeOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a Local Chrome WebDriver instance.
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(OpenQA.Selenium.Firefox.FirefoxOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Firefox WebDriver instance.
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(OpenQA.Selenium.Edge.EdgeOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Edge WebDriver instance. (Only supported on Microsoft Windows 10)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(OpenQA.Selenium.IE.InternetExplorerOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Internet Explorer WebDriver instance. (Only supported on Microsoft Windows)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.ILocalWebDriverFactory.GetWebDriver(OpenQA.Selenium.Safari.SafariOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Safari WebDriver instance. (Only supported on Mac Os)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IRemoteWebDriverFactory">
+            <summary>
+            Interface for a Factory for WebDrivers running on a Selenium grid.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IRemoteWebDriverFactory.GridUri">
+            <summary>
+            The Uri of your selenium grid for remote WebDriver instances.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IRemoteWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,OpenQA.Selenium.PlatformType,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a configured RemoteWebDriver of the given browser type with default settings.
+            </summary>
+            <param name="browser"></param>
+            <param name="platformType"></param>
+            <param name="windowSize"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IRemoteWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Return a RemoteWebDriver instance of the given configuration.
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IRemoteWebDriverFactory.GetWebDriver(OpenQA.Selenium.DriverOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a RemoteWebDriver of the given windows size.
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IWebDriverFactory">
+            <summary>
+            Interface for WebDriverFactory Instances.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,OpenQA.Selenium.PlatformType,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a WebDriver instance of the given configuration.
+            </summary>
+            <param name="browser"></param>
+            <param name="windowSize"></param>
+            <param name="isLocal"></param>
+            <param name="platformType"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.IWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Return a WebDriver instance of the given configuration.
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase">
+            <summary>
+            Default LocalWebDriverFactory implementation for .NET Core projects.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,System.String,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer,System.Boolean)">
+            <summary>
+            Return a DriverFactory instance for use in .NET Core projects.
+            Try using installedDriverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)" when running from .NET core projects.
+            </summary>
+            <param name="driverOptionsFactory"></param>
+            <param name="installedDriverPath"></param>
+            <param name="webDriverReSizer"></param>
+            <param name="useInternalEdgeDriver"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,AlexanderOnTest.NetCoreWebDriverFactory.DriverPath,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer,System.Boolean)">
+            <summary>
+            Return a DriverFactory instance for use in .NET Core projects.
+            Try using driverPath = new DriverPath(Assembly.GetCallingAssembly()) when testing locally from .NET core projects.
+            </summary>
+            <param name="driverOptionsFactory"></param>
+            <param name="driverPath"></param>
+            <param name="webDriverReSizer"></param>
+            <param name="useInternalEdgeDriver"></param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.InstalledDriverPath">
+            <summary>
+            The path of installed drivers.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.WebDriverReSizer">
+            <summary>
+            The IWebDriverReSizer implementation to use.
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.DriverOptionsFactory">
+            <summary>
+            The DriverOptionsFactory to use.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a local WebDriver of the given browser type with default settings.
+            </summary>
+            <param name="browser"></param>
+            <param name="windowSize"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Config.IWebDriverConfiguration)">
+            <summary>
+            Return a local WebDriver instance of the given configuration.
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(OpenQA.Selenium.Chrome.ChromeOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a Local Chrome WebDriver instance.
+            Try using driverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)"
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(OpenQA.Selenium.Firefox.FirefoxOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Firefox WebDriver instance.
+            Try using driverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)"
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(OpenQA.Selenium.Edge.EdgeOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Edge WebDriver instance. (Only supported on Microsoft Windows 10 version 1809 or later)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(OpenQA.Selenium.IE.InternetExplorerOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Internet Explorer WebDriver instance. (Only supported on Microsoft Windows)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetWebDriver(OpenQA.Selenium.Safari.SafariOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Safari WebDriver instance. (Only supported on Mac Os)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetLocalWebDriver(OpenQA.Selenium.Chrome.ChromeOptions,System.String,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a Local Chrome WebDriver instance.
+            Try using driverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)" 
+            </summary>
+            <param name="options"></param>
+            <param name="driverPath"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetLocalWebDriver(OpenQA.Selenium.Firefox.FirefoxOptions,System.String,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Firefox WebDriver instance.
+            Try using driverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)" 
+            </summary>
+            <param name="options"></param>
+            <param name="driverPath"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetLocalWebDriver(OpenQA.Selenium.Edge.EdgeOptions,System.String,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Edge WebDriver instance. (Only supported on Microsoft Windows 10)
+            Try using driverPath = null (default) for Windows 10 version 1809 and later.
+            Try using driverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)" for Windows 10 version 1803 and earlier.
+            </summary>
+            <param name="options"></param>
+            <param name="driverPath"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetLocalWebDriver(OpenQA.Selenium.IE.InternetExplorerOptions,System.String,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Internet Explorer WebDriver instance. (Only supported on Microsoft Windows)
+            Try using driverPath = "Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)"
+            </summary>
+            <param name="options"></param>
+            <param name="driverPath"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.LocalWebDriverFactoryBase.GetLocalWebDriver(OpenQA.Selenium.Safari.SafariOptions,System.String,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Safari WebDriver instance. (Only supported on Mac Os)
+            Try using driverPath = null (default)
+            </summary>
+            <param name="options"></param>
+            <param name="driverPath"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.Windows1803LocalWebDriverFactory">
+            <summary>
+            Implementation of the ILocalWebDriverFactory interface for .NET Core test projects to allow Edge to work on Windows 10 version 1803 and Earlier.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.Windows1803LocalWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,System.String,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a WebDriverFactory for Windows 10 version 1803 and earlier
+            </summary>
+            <param name="driverOptionsFactory"></param>
+            <param name="installedDriverPath"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.Windows1803LocalWebDriverFactory.#ctor(AlexanderOnTest.NetCoreWebDriverFactory.DriverOptionsFactory.IDriverOptionsFactory,AlexanderOnTest.NetCoreWebDriverFactory.DriverPath,AlexanderOnTest.NetCoreWebDriverFactory.Utils.IWebDriverReSizer)">
+            <summary>
+            Return a WebDriverFactory for Windows 10 version 1803 and earlier
+            </summary>
+            <param name="driverOptionsFactory"></param>
+            <param name="driverPath"></param>
+            <param name="webDriverReSizer"></param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.Windows1803LocalWebDriverFactory.GetWebDriver(AlexanderOnTest.NetCoreWebDriverFactory.Browser,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Boolean,System.Drawing.Size)">
+            <summary>
+            Return a local webdriver of the given browser type with default settings.
+            </summary>
+            <param name="browser"></param>
+            <param name="windowSize"></param>
+            <param name="headless"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WebDriverFactory.Windows1803LocalWebDriverFactory.GetWebDriver(OpenQA.Selenium.Edge.EdgeOptions,AlexanderOnTest.NetCoreWebDriverFactory.WindowSize,System.Drawing.Size)">
+            <summary>
+            Return a local Edge WebDriver instance. (Only supported on Microsoft Windows 10 version 1803 or earlier)
+            </summary>
+            <param name="options"></param>
+            <param name="windowSize"></param>
+            <param name="windowCustomSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize">
+            <summary>
+            Enum of Browser window size configurations.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Hd">
+            <summary>
+            HD - 1366 x 768 (cheap laptop) screen size. Most common 'PC' screen size.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Fhd">
+            <summary>
+            Full HD - 1920 x 1080 screen size. 2nd most common 'PC' screen size.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Maximise">
+            <summary>
+            Maximise the browser to the full screen.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Unchanged">
+            <summary>
+            Continue without setting screen size, this may not be consistent.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Maximize">
+            <summary>
+            Maximize the browser to the full screen.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Custom">
+            <summary>
+            Customise browser size according to the windowCustomSize configuration.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Qhd">
+            <summary>
+            Quad HD (aka 1440p) - 2560 x 1440
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Uhd">
+            <summary>
+            Ultra HD-1 (aka 4k) - 3840 x 2160
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.WindowSize.Defined">
+            <summary>
+            Implemented form for all defined size browsers
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.WindowSizeExtension">
+            <summary>
+            Extension methods for the WindowSize Enum.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WindowSizeExtension.Size(AlexanderOnTest.NetCoreWebDriverFactory.WindowSize)">
+            <summary>
+            Return the requested browser window size for the Enum value, or (0,0) if size is not specified
+            </summary>
+            <param name="windowSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.WindowSizeExtension.HasDefinedSize(AlexanderOnTest.NetCoreWebDriverFactory.WindowSize)">
+            <summary>
+            Does this WindowSize value request a given size for the generated WebDriver?
+            </summary>
+            <param name="windowSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog">
+            <summary>
+                Simple interface that represent a logger.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog.Log(AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel,System.Func{System.String},System.Exception,System.Object[])">
+            <summary>
+                Log a message the specified log level.
+            </summary>
+            <param name="logLevel">The log level.</param>
+            <param name="messageFunc">The message function.</param>
+            <param name="exception">An optional exception.</param>
+            <param name="formatParameters">Optional format parameters for the message generated by the messagefunc. </param>
+            <returns>true if the message was logged. Otherwise false.</returns>
+            <remarks>
+                Note to implementers: the message func should not be called if the loglevel is not enabled
+                so as not to incur performance penalties.
+                To check IsEnabled call Log with only LogLevel and check the return value, no event will be written.
+            </remarks>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILogProvider">
+            <summary>
+            Represents a way to get a <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/>
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILogProvider.GetLogger(System.String)">
+            <summary>
+            Gets the specified named logger.
+            </summary>
+            <param name="name">Name of the logger.</param>
+            <returns>The logger reference.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILogProvider.OpenNestedContext(System.String)">
+            <summary>
+            Opens a nested diagnostics context. Not supported in EntLib logging.
+            </summary>
+            <param name="message">The message to add to the diagnostics context.</param>
+            <returns>A disposable that when disposed removes the message from the context.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILogProvider.OpenMappedContext(System.String,System.Object,System.Boolean)">
+            <summary>
+            Opens a mapped diagnostics context. Not supported in EntLib logging.
+            </summary>
+            <param name="key">A key.</param>
+            <param name="value">A value.</param>
+            <param name="destructure">Determines whether to call the destructor or not.</param>
+            <returns>A disposable that when disposed removes the map from the context.</returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions">
+            <summary>
+                Extension methods for the <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> interface.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.IsDebugEnabled(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog)">
+            <summary>
+                Check if the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level is enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to check with.</param>
+            <returns>True if the log level is enabled; false otherwise.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.IsErrorEnabled(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog)">
+            <summary>
+                Check if the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level is enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to check with.</param>
+            <returns>True if the log level is enabled; false otherwise.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.IsFatalEnabled(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog)">
+            <summary>
+                Check if the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level is enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to check with.</param>
+            <returns>True if the log level is enabled; false otherwise.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.IsInfoEnabled(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog)">
+            <summary>
+                Check if the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level is enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to check with.</param>
+            <returns>True if the log level is enabled; false otherwise.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.IsTraceEnabled(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog)">
+            <summary>
+                Check if the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level is enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to check with.</param>
+            <returns>True if the log level is enabled; false otherwise.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.IsWarnEnabled(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog)">
+            <summary>
+                Check if the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level is enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to check with.</param>
+            <returns>True if the log level is enabled; false otherwise.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Debug(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Func{System.String})">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="messageFunc">The message function.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Debug(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String)">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Debug(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Debug(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Exception,System.String,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="exception">The exception.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.DebugFormat(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.DebugException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception)">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.DebugException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Error(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Func{System.String})">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="messageFunc">The message function.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Error(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String)">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Error(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Error(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Exception,System.String,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="exception">The exception.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.ErrorFormat(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.ErrorException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Fatal(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Func{System.String})">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="messageFunc">The message function.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Fatal(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String)">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Fatal(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Fatal(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Exception,System.String,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="exception">The exception.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.FatalFormat(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.FatalException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Info(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Func{System.String})">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="messageFunc">The message function.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Info(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String)">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Info(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Info(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Exception,System.String,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="exception">The exception.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.InfoFormat(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.InfoException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Trace(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Func{System.String})">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="messageFunc">The message function.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Trace(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String)">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Trace(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Trace(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Exception,System.String,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="exception">The exception.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.TraceFormat(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.TraceException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Warn(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Func{System.String})">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="messageFunc">The message function.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Warn(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String)">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Warn(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.Warn(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.Exception,System.String,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="exception">The exception.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.WarnFormat(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Object[])">
+            <summary>
+                Logs a message at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogExtensions.WarnException(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog,System.String,System.Exception,System.Object[])">
+            <summary>
+                Logs an exception at the <see cref="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn"/> log level, if enabled.
+            </summary>
+            <param name="logger">The <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/> to use.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+            <param name="args">Optional format parameters for the message.</param>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel">
+            <summary>
+                The log level.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Trace">
+            <summary>
+            Trace
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Debug">
+            <summary>
+            Debug
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Info">
+            <summary>
+            Info
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Warn">
+            <summary>
+            Warn
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Error">
+            <summary>
+            Error
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogLevel.Fatal">
+            <summary>
+            Fatal
+            </summary>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider">
+            <summary>
+            Provides a mechanism to create instances of <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog" /> objects.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.SetCurrentLogProvider(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILogProvider)">
+            <summary>
+            Sets the current log provider.
+            </summary>
+            <param name="logProvider">The log provider.</param>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.IsDisabled">
+            <summary>
+            Gets or sets a value indicating whether this is logging is disabled.
+            </summary>
+            <value>
+            <c>true</c> if logging is disabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.OnCurrentLogProviderSet">
+            <summary>
+            Sets an action that is invoked when a consumer of your library has called SetCurrentLogProvider. It is 
+            important that hook into this if you are using child libraries (especially ilmerged ones) that are using
+            LibLog (or other logging abstraction) so you adapt and delegate to them.
+            <see cref="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.SetCurrentLogProvider(AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILogProvider)"/> 
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.For``1">
+            <summary>
+            Gets a logger for the specified type.
+            </summary>
+            <typeparam name="T">The type whose name will be used for the logger.</typeparam>
+            <returns>An instance of <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.GetCurrentClassLogger">
+            <summary>
+            Gets a logger for the current class.
+            </summary>
+            <returns>An instance of <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.GetLogger(System.Type,System.String)">
+            <summary>
+            Gets a logger for the specified type.
+            </summary>
+            <param name="type">The type whose name will be used for the logger.</param>
+            <param name="fallbackTypeName">If the type is null then this name will be used as the log name instead</param>
+            <returns>An instance of <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.GetLogger(System.String)">
+            <summary>
+            Gets a logger with the specified name.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>An instance of <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.ILog"/></returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.OpenNestedContext(System.String)">
+            <summary>
+            Opens a nested diagnostics context.
+            </summary>
+            <param name="message">A message.</param>
+            <returns>An <see cref="T:System.IDisposable"/> that closes context when disposed.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProvider.OpenMappedContext(System.String,System.Object,System.Boolean)">
+            <summary>
+            Opens a mapped diagnostics context.
+            </summary>
+            <param name="key">A key.</param>
+            <param name="value">A value.</param>
+            <param name="destructure">A optional paramater to indicate message should be destructured.</param>
+            <returns>An <see cref="T:System.IDisposable"/> that closes context when disposed.</returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LibLogException">
+            <summary>
+            Exception thrown by LibLog.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LibLogException.#ctor(System.String)">
+            <summary>
+            Initializes a new LibLogException with the specified message.
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LibLogException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new LibLogException with the specified message and inner exception.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogMessageFormatter.SimulateStructuredLogging(System.Func{System.String},System.Object[])">
+            <summary>
+                Some logging frameworks support structured logging, such as serilog. This will allow you to add names to structured
+                data in a format string:
+                For example: Log("Log message to {user}", user). This only works with serilog, but as the user of LibLog, you don't
+                know if serilog is actually
+                used. So, this class simulates that. it will replace any text in {curly braces} with an index number.
+                "Log {message} to {user}" would turn into => "Log {0} to {1}". Then the format parameters are handled using regular
+                .net string.Format.
+            </summary>
+            <param name="messageBuilder">The message builder.</param>
+            <param name="formatParameters">The format parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase">
+            <summary>
+                Base class for specific log providers.
+            </summary>
+        </member>
+        <member name="F:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.ErrorInitializingProvider">
+            <summary>
+                Error message should initializing the log provider fail.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.#ctor">
+            <summary>
+                Initialize an instance of the <see cref="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase"/> class by initializing the references
+                to the nested and mapped diagnostics context-obtaining functions.
+            </summary>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.GetLogger(System.String)">
+            <summary>
+            Gets the specified named logger.
+            </summary>
+            <param name="name">Name of the logger.</param>
+            <returns>The logger reference.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.OpenNestedContext(System.String)">
+            <summary>
+            Opens a nested diagnostics context. Not supported in EntLib logging.
+            </summary>
+            <param name="message">The message to add to the diagnostics context.</param>
+            <returns>A disposable that when disposed removes the message from the context.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.OpenMappedContext(System.String,System.Object,System.Boolean)">
+            <summary>
+            Opens a mapped diagnostics context. Not supported in EntLib logging.
+            </summary>
+            <param name="key">A key.</param>
+            <param name="value">A value.</param>
+            <param name="destructure">Determines whether to call the destructor or not.</param>
+            <returns>A disposable that when disposed removes the map from the context.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.GetOpenNdcMethod">
+            <summary>
+                Returns the provider-specific method to open a nested diagnostics context.
+            </summary>
+            <returns>A provider-specific method to open a nested diagnostics context.</returns>
+        </member>
+        <member name="M:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.GetOpenMdcMethod">
+            <summary>
+                Returns the provider-specific method to open a mapped diagnostics context.
+            </summary>
+            <returns>A provider-specific method to open a mapped diagnostics context.</returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.OpenNdc">
+            <summary>
+                Delegate defining the signature of the method opening a nested diagnostics context.
+            </summary>
+            <param name="message">The message to add to the diagnostics context.</param>
+            <returns>A disposable that when disposed removes the message from the context.</returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LogProviderBase.OpenMdc">
+            <summary>
+                Delegate defining the signature of the method opening a mapped diagnostics context.
+            </summary>
+            <param name="key">A key.</param>
+            <param name="value">A value.</param>
+            <param name="destructure">Determines whether to call the destructor or not.</param>
+            <returns>A disposable that when disposed removes the map from the context.</returns>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LoupeLogProvider.WriteDelegate">
+            <summary>
+                The form of the Loupe Log.Write method we're using
+            </summary>
+        </member>
+        <member name="P:AlexanderOnTest.NetCoreWebDriverFactory.Logging.LogProviders.LoupeLogProvider.ProviderIsAvailableOverride">
+            <summary>
+                Gets or sets a value indicating whether [provider is available override]. Used in tests.
+            </summary>
+            <value>
+                <c>true</c> if [provider is available override]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:AlexanderOnTest.NetCoreWebDriverFactory.Logging.Logger">
+            <summary>
+            Logger delegate.
+            </summary>
+            <param name="logLevel">The log level</param>
+            <param name="messageFunc">The message function</param>
+            <param name="exception">The exception</param>
+            <param name="formatParameters">The format parameters</param>
+            <returns>A boolean.</returns>
+        </member>
+    </members>
+</doc>

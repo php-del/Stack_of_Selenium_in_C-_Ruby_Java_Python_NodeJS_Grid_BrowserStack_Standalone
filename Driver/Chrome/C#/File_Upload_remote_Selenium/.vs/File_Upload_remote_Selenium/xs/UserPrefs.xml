@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{08CF91AE-2036-4BC0-B576-9EA632BA6621}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="File_Upload_remote_Selenium/Program.cs">
+    <Files>
+      <File FileName="File_Upload_remote_Selenium/Program.cs" Line="47" Column="65" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="File_Upload_remote_Selenium" expanded="True">
+            <Node name="File_Upload_remote_Selenium" expanded="True" selected="True">
+              <Node name="References" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.ItemProperties.File__Upload__remote__Selenium PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

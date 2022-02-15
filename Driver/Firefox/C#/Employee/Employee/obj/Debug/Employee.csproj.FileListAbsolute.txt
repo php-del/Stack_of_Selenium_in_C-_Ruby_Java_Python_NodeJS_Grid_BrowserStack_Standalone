@@ -1,0 +1,6 @@
+/Users/pratikhemantpathare/Projects/Employee/Employee/obj/Debug/Employee.csproj.AssemblyReference.cache
+/Users/pratikhemantpathare/Projects/Employee/Employee/obj/Debug/Employee.csproj.CoreCompileInputs.cache
+/Users/pratikhemantpathare/Projects/Employee/Employee/bin/Debug/Employee.exe
+/Users/pratikhemantpathare/Projects/Employee/Employee/bin/Debug/Employee.pdb
+/Users/pratikhemantpathare/Projects/Employee/Employee/obj/Debug/Employee.exe
+/Users/pratikhemantpathare/Projects/Employee/Employee/obj/Debug/Employee.pdb

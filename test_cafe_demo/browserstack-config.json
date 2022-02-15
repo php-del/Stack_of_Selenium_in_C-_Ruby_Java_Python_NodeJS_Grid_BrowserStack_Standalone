@@ -1,0 +1,5 @@
+{
+    "browserstack.idleTimeout":    "300",
+    "browserstack.geoLocation":"IN",
+    "browserstack.local":"true"
+}
